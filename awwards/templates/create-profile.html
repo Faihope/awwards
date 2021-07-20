@@ -1,3 +1,4 @@
+{% load bootstrap3 %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
   <title>New Post</title>
   {{form.media}}
 
-{% block styles %} 
+{% block styles %} {% bootstrap_css %}
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 {% endblock %}
@@ -24,7 +25,7 @@
       <form action="{% url 'create_profile'%}" method="post"  enctype="multipart/form-data">
 
         {% csrf_token%}
-       
+        {% bootstrap_form form %}
         <div class="form-group text-center">
           <input type="submit" class="btn btn-primary sign-up-button" value="Share">
         </div>
@@ -35,7 +36,7 @@
 
    {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  {% endblock %}
+  {% bootstrap_javascript %} {% endblock %}
 
 </body>
 

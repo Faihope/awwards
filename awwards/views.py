@@ -10,6 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 def index(request):
+    projects=Project.objects.all()
     try:
         if not request.user.is_authenticated:
             return redirect('/login/')
@@ -20,7 +21,7 @@ def index(request):
         return redirect('create_profile')
 
 
-    return render(request,'index.html',{'profile':profile})
+    return render(request,'index.html',{'profile':profile,'projects':projects})
 
 def registeruser(request):
     title = 'Register - awwards'
@@ -68,7 +69,7 @@ def create_profile(request):
             profile.username = current_user
 
             profile.save()
-        return redirect('Index')
+        return redirect('index')
     else:
         form=ProfileForm()
 
@@ -90,7 +91,6 @@ def new_project(request):
             project = form.save(commit=False)
             project.username = current_user
             project.avatar = profile.avatar
-            project.country = profile.country
 
             project.save()
     else:
