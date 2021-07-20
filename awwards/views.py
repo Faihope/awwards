@@ -36,9 +36,14 @@ def loginpage(request):
         user = authenticate(request,username=username,password=password)
         if user is not None:
             login(request,user)
-            return redirect(reverse('welcome'))
+            return redirect(reverse('index'))
         else:
             messages.info(request,'Username or password is incorrect')
        
     context={}
     return render(request,'registration/login.html',context)
+
+
+def logoutuser(request):
+    
+    return redirect(reverse('loginpage'))

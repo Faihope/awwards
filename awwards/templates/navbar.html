@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +10,7 @@
 </head>
 
 <body>
+    {% block content %}
  
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <a href="#" class="navbar-brand">Brand</a>
@@ -28,12 +30,15 @@
             </form>
             <div class="navbar-nav ml-4">
                 <a href="#" class="nav-item nav-link">Profile</a>
-                <a href="#" class="nav-item nav-link">login</a>
+                <a href="{% url 'loginpage' %}" class="nav-item nav-link">Login</a>
+                <a href="{% url 'logoutuser' %}" class="nav-item nav-link">Logout</a>
+
 
 
             </div>
         </div>
     </nav>
+    {% endblock%}
   </div>
 </body>
 
