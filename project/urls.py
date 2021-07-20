@@ -21,6 +21,8 @@ from django.urls.conf import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('', include('awwards.urls')),
+    url(r'^', include('django.contrib.auth.urls'))
+
    
 
 
