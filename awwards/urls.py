@@ -10,6 +10,8 @@ urlpatterns=[
         url(r'registeruser/',views.registeruser,name='registeruser'),
         url(r'^loginpage/',views.loginpage,name='loginpage'),
         url(r'^logout/$',views.logoutuser,name='logoutuser'),
+        url(r'^create/profile$',views.create_profile, name='create_profile'),
+
 
 
 

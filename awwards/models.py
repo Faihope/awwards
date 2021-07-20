@@ -8,9 +8,9 @@ from django.db.models.fields import TextField
 class Project(models.Model):
     title=models.CharField(max_length=100,null=False)
     description=models.TextField(max_length=500)
-    screenshot1=models.ImageField(default='default\.png',blank=True)
-    screenshot2=models.ImageField(default='default\.png',blank=True)
-    screenshot3=models.ImageField(default='default\.png',blank=True)
+    screenshot1=models.ImageField(default='default\.png',upload_to='screenshots/',blank=True)
+    screenshot2=models.ImageField(default='default\.png',upload_to='screenshots/',blank=True)
+    screenshot3=models.ImageField(default='default\.png',upload_to='screenshots/',blank=True)
     link=models.CharField(max_length=100,blank=True)
     username = models.ForeignKey(User,on_delete=models.CASCADE)
 

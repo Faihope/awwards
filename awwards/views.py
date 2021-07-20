@@ -1,15 +1,26 @@
+from awwards.models import Profile
 from django.shortcuts import render,redirect
-from .forms import CreateUserForm
+from .forms import CreateUserForm,ProfileForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout as dj_login
 from django.urls import reverse
+from django.core.exceptions import ObjectDoesNotExist
+
 
 
 # Create your views here.
 def index(request):
+    try:
+        if not request.user.is_authenticated:
+            return redirect('/login/')
+        current_user = request.user
+        profile =Profile.objects.get(username=current_user)
+        print(current_user)
+    except ObjectDoesNotExist:
+        return redirect('create_profile')
 
 
-    return render(request,'index.html')
+    return render(request,'index.html',{'profile':profile})
 
 def registeruser(request):
     title = 'Register - awwards'
@@ -47,3 +58,18 @@ def loginpage(request):
 def logoutuser(request):
     
     return redirect(reverse('loginpage'))
+
+def create_profile(request):
+    current_user = request.user
+    if request.method=='POST':
+        form = ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.username = current_user
+
+            profile.save()
+        return redirect('Index')
+    else:
+        form=ProfileForm()
+
+    return render(request,'create_profile.html',{"form":form})
