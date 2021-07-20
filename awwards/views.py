@@ -1,4 +1,4 @@
-from awwards.models import Profile
+from awwards.models import Profile,Project
 from django.shortcuts import render,redirect
 from .forms import CreateUserForm,ProfileForm
 from django.contrib import messages
@@ -73,3 +73,12 @@ def create_profile(request):
         form=ProfileForm()
 
     return render(request,'create_profile.html',{"form":form})
+
+def profile(request):
+    current_user = request.user
+    profile =Profile.objects.get(username=current_user)
+    projects=Project.objects.filter(username=current_user)
+
+    return render(request,'profile.html',{"projects":projects,"profile":profile})
+
+    
