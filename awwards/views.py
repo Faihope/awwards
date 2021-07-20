@@ -1,6 +1,6 @@
 from awwards.models import Profile,Project
 from django.shortcuts import render,redirect
-from .forms import CreateUserForm,ProfileForm
+from .forms import CreateUserForm,ProfileForm,ProjectForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout as dj_login
 from django.urls import reverse
@@ -72,7 +72,7 @@ def create_profile(request):
     else:
         form=ProfileForm()
 
-    return render(request,'create_profile.html',{"form":form})
+    return render(request,'create-profile.html',{"form":form})
 
 def profile(request):
     current_user = request.user
@@ -81,4 +81,19 @@ def profile(request):
 
     return render(request,'profile.html',{"projects":projects,"profile":profile})
 
-    
+def new_project(request):
+    current_user = request.user
+    profile =Profile.objects.get(username=current_user)
+    if request.method =='POST':
+        form = ProjectForm(request.POST,request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.username = current_user
+            project.avatar = profile.avatar
+            project.country = profile.country
+
+            project.save()
+    else:
+        form = ProjectForm()
+
+    return render(request,'project.html',{"form":form})
