@@ -41,3 +41,9 @@ class ProfileTestclass(TestCase):
         self.myprofile.save_profile()
         profile=Profile.objects.all()
         self.assertTrue(len(profile)>0)
+
+    def test_delete_profile(self):
+        self.myprofile.save_profile()
+        profile_record=Profile.objects.all()
+        self.myprofile.delete_profile()
+        self.assertTrue(len(profile_record)==0)
