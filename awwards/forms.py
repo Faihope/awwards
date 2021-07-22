@@ -13,7 +13,7 @@ class CreateUserForm(UserCreationForm):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model=Project
-        exclude=['username','design','usability','creativity','overall_score']
+        exclude=['username','design','usability','creativity','overall_score','screenshot2','screenshot3']
 
 class ProfileForm(forms.ModelForm):
     class Meta:

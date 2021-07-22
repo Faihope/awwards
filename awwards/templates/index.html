@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 
+
 {% block content%}
 <div class="container">
     <div class="row">
@@ -15,7 +16,7 @@
                 <a style="text-decoration: none;" href=""
                     class="btn btn-outline-light btn-sm m-1">
 
-                    <img class="image-thumbail" src="{{ project.screenshot1 }}" width="700px" height="500px"
+                    <img class="image-thumbail" src="{{ project.screenshot1.url }}" width="700px" height="500px"
                         alt="Card image cap"></a> 
                 
                 <p class="cap ml-4">{{project.title}}</p>

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.fields import TextField
+from django.conf import settings
 
 
 # Create your models here.
@@ -12,7 +13,7 @@ class Project(models.Model):
     screenshot2=models.ImageField(default='default\.png',upload_to='screenshots/',blank=True)
     screenshot3=models.ImageField(default='default\.png',upload_to='screenshots/',blank=True)
     link=models.CharField(max_length=100,blank=True)
-    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
 
 
     def __str__(self):
@@ -21,7 +22,7 @@ class Project(models.Model):
 class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/')
     bio = TextField(max_length=500,null=False)
-    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,blank=True)
     name =models.CharField(max_length=100)
     email = models.EmailField()
 
