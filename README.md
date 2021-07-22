@@ -5,7 +5,8 @@
 
 # Description
 
-This is an application that allows user to post projects,enable others to vote on them and rate them based on the usability,design and creativity
+This is an application that allows user to post projects,enable others to vote on them and rate them based on the usability,design and creativity.
+Note:The profile is not working for reasons i didnt figure out. But i will keep working on it.
 ## Live Link
 [View Site]()
 

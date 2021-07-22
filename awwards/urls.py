@@ -12,20 +12,11 @@ urlpatterns=[
         path('register/', views.registeruser, name="register"),
 	path('login/', views.loginpage, name="login"), 
         path('logoutuser/',views.logoutuser,name='logoutuser'),
-        path('create/profile/',views.create_profile, name='e create_profile'),
+        path('create/profile/',views.create_profile, name='create_profile'),
         path('profiles/',views.profile, name='profile'),
         path('new/project/',views.new_project, name='new_project'),
         path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
-        path(r'^api/merch/$', views.MerchList.as_view())
-
-
-
-
-
-
-
-
-
+        path(r'^api/merch/$', views.MerchList.as_view()),
 
 ]
 

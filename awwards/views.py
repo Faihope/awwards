@@ -17,13 +17,11 @@ from .serializer import MerchSerializer
 def index(request):
     projects=Project.objects.all()
 
-    item_name=request.GET.get('item_name')
-    if item_name!='' and item_name is not None:
+    if 'item_name' in request.GET:
+        item_name=request.GET['item_name']
         projects=projects.filter(title__icontains=item_name)
-
     else:
-        messages.info(request, 'No search term found')
-
+        projects=Project.objects.all()
 
     return render(request,'index.html',{'projects':projects})
 
