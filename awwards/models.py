@@ -40,6 +40,16 @@ class Profile(models.Model):
 
     def delete_profile(self):
         self.delete()
+class Myprojects(models.Model):
+    title = models.CharField(max_length=40)
+    description = models.TextField()
+
+class Myprofile(models.Model):
+    name = models.CharField(max_length=40)
+    bio = models.TextField()
+    email = models.EmailField()
+    
+
 
 
 
