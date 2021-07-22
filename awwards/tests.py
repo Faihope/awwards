@@ -26,3 +26,13 @@ class ProjectTestclass(TestCase):
         self.assertTrue(len(project_record)==0)
 
 
+
+class ProfileTestclass(TestCase):
+    #setup method
+    def setUp(self):
+        self.myprofile=Profile(profile_pic='image',bio='Hardworking',email='email@gmail.com',avatar='avatar')
+
+     #Testing Instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.myprofile,Profile))
+
