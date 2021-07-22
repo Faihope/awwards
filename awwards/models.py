@@ -19,6 +19,9 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+    def save_project(self):
+        self.save()
+
 class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/')
     bio = TextField(max_length=500,null=False)
