@@ -5,6 +5,11 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout as dj_login
 from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import  Myprofile,Myprojects
+from .serializer import MerchSerializer
+
 
 
 
@@ -104,3 +109,19 @@ def new_project(request):
         form = ProjectForm()
 
     return render(request,'project.html',{"form":form})
+
+class MerchList(APIView):
+    def get(self, request, format=None):
+        all_merch = Myprojects.objects.all()
+        serializers = MerchSerializer(all_merch, many=True)
+        return Response(serializers.data)
+
+class MerchList(APIView):
+    def get(self, request, format=None):
+        all_merch = Myprofile.objects.all()
+        serializers = MerchSerializer(all_merch, many=True)
+        return Response(serializers.data)
+
+
+
+
