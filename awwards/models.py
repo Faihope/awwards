@@ -22,6 +22,9 @@ class Project(models.Model):
     def save_project(self):
         self.save()
 
+    def delete_project(self):
+        self.delete()
+
 class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/')
     bio = TextField(max_length=500,null=False)
