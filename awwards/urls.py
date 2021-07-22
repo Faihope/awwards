@@ -3,6 +3,8 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls.conf import include
+
 
 
 urlpatterns=[
@@ -13,6 +15,8 @@ urlpatterns=[
         path('create/profile/',views.create_profile, name='e create_profile'),
         path('profiles/',views.profile, name='profile'),
         path('new/project/',views.new_project, name='new_project'),
+        path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
+
 
 
 

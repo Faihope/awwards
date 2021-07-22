@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'awwards',
     'bootstrap3',
     'crispy_forms',
+    'star_ratings',
     
 ]
 
@@ -156,3 +157,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+STAR_RATINGS_RERATE = False

@@ -40,4 +40,4 @@ Open the application on your browser `127.0.0.1:8000`.
 
 
 ## License
-* *MIT License: licence
+* *MIT License: licence*

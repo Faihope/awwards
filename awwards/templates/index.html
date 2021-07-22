@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
-
+{% load static %}
+{% load ratings %}
 
 {% block content%}
 <div class="container">
@@ -42,12 +43,8 @@
                 <a href="{{project.link}}" class="ml-4">View link</a>
 
                 <div class="card-body">
-                    <h2>Rate in based on:</h2>
-
-                    <button class="btn btn-success">Design</button>
-                    <span> <button class="btn btn-info">Usability</button></span>
-                    <span> <button class="btn btn-warning">Creativity</button></span>
-
+                    <h2>Rate it.</h2>
+                    {% ratings project %}
                 </div>
 
 
